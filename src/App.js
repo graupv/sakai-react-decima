@@ -44,6 +44,7 @@ import './assets/demo/flags/flags.css';
 import './assets/demo/Demos.scss';
 import './assets/layout/layout.scss';
 import './App.scss';
+import { Printing } from './components/Printing';
 
 const App = () => {
     const [layoutMode, setLayoutMode] = useState('static');
@@ -158,10 +159,10 @@ const App = () => {
     const menu = [
         {
             label: 'Home',
-            items: [{
-                // label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/dash',
-                label: 'Parking', icon: 'pi pi-fw pi-car', to: '/'
-            }]
+            items: [
+                {label: 'Printing', icon: 'pi pi-fw pi-print', to: '/printing'},
+                {label: 'Parking', icon: 'pi pi-fw pi-car', to: '/parking'}
+            ]
         },
         {
             label: 'UI Components', icon: 'pi pi-fw pi-sitemap',
@@ -247,7 +248,8 @@ const App = () => {
 
             <div className="layout-main-container">
                 <div className="layout-main">
-                    <Route path="/" exact render={() => <Dashboard colorMode={layoutColorMode} location={location} />} />
+                    <Route path="/printing" exact component={Printing} />
+                    <Route path="/parking" exact render={() => <Dashboard colorMode={layoutColorMode} location={location} />} />
                     <Route path="/formlayout" component={FormLayoutDemo} />
                     <Route path="/input" component={InputDemo} />
                     <Route path="/floatlabel" component={FloatLabelDemo} />
